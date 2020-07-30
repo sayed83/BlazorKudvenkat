@@ -35,6 +35,19 @@ namespace EmployeeManagement.Api.Models
                 DepartmentId = 1,
                 PhotoPath = "images/sayed.jpg"
             });
+            
+            modelBuilder.Entity<Employee>().HasData(new Employee 
+            {
+                EmployeeId = 2,
+                FirstName = "Md",
+                LastName = "Hossain",
+                Email = "mdhossain@gmail.com",
+                DateOfBrith = new DateTime(1990, 8, 15),
+                Gender = Gender.Male,
+                //Department = new Department { DepartmentId = 1, DepartmentName = "IT" },
+                DepartmentId = 1,
+                PhotoPath = "images/hossain.jpg"
+            });
         }
     }
 }

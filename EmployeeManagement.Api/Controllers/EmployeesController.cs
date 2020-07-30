@@ -47,5 +47,22 @@ namespace EmployeeManagement.Api.Controllers
             }
             
         }
+
+        [HttpPost]
+        public async Task<ActionResult<Employee>> CreateEmployee([FromBody] Employee employee)
+        {
+            try
+            {
+                if (employee == null) return BadRequest();
+
+                var addedEmployee = await empRepo.AddEmployee(employee);
+
+                return CreatedAtAction(nameof(GetEmployee), new { id = addedEmployee.DepartmentId }, addedEmployee);
+            }
+            catch (Exception)
+            {
+                return StatusCode(StatusCodes.Status500InternalServerError, "Error retrieving data from the database");
+            }
+        }
     }
 }
