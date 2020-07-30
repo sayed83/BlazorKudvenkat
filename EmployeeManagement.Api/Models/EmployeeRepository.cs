@@ -1,4 +1,5 @@
 ﻿using EmployeeManagement.Models;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
@@ -69,6 +70,22 @@ namespace EmployeeManagement.Api.Models
         {
             var existemail = await db.Employees.FirstOrDefaultAsync(e => e.Email == email);
             return existemail;
+        }
+
+        public async Task<IEnumerable<Employee>> Search(string name, Gender? gender)
+        {
+            IQueryable<Employee> query = db.Employees;
+
+            if (!string.IsNullOrEmpty(name))
+            {
+                query = query.Where(e => e.FirstName.Contains(name) || e.LastName.Contains(name));
+            }
+
+            if(gender != null)
+            {
+                query = query.Where(e => e.Gender == gender);
+            }
+            return await query.ToListAsync();
         }
     }
 }
