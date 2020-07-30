@@ -61,5 +61,11 @@ namespace EmployeeManagement.Api.Models
                 await db.SaveChangesAsync();
             }
         }
+
+        public async Task<Employee> GetEmployeeByEmail(string email)
+        {
+            var existemail = await db.Employees.FirstOrDefaultAsync(e => e.Email == email);
+            return existemail;
+        }
     }
 }

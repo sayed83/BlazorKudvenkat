@@ -44,8 +44,7 @@ namespace EmployeeManagement.Api.Controllers
             catch (Exception)
             {
                 return StatusCode(StatusCodes.Status500InternalServerError, "Error retrieving data from the database");
-            }
-            
+            }          
         }
 
         [HttpPost]
@@ -54,6 +53,14 @@ namespace EmployeeManagement.Api.Controllers
             try
             {
                 if (employee == null) return BadRequest();
+
+                var email = empRepo.GetEmployeeByEmail(employee.Email);
+
+                if(email != null)
+                {
+                    ModelState.AddModelError("email", "Email alredy exist please try anather");
+                    return BadRequest(ModelState);
+                }
 
                 var addedEmployee = await empRepo.AddEmployee(employee);
 
