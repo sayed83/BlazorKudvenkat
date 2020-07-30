@@ -92,9 +92,27 @@ namespace EmployeeManagement.Api.Controllers
             }
             catch (Exception)
             {
-
                 return StatusCode(StatusCodes.Status500InternalServerError, "Error retrieving data from the database");
             }
+        }
+
+        [HttpDelete("id:int")]
+        public async Task<ActionResult<Employee>> DeleteEmployee(int id)
+        {
+            try
+            {
+                var CheckEmpDataForDelete = await empRepo.GetEmployee(id);
+                if (CheckEmpDataForDelete == null)
+                {
+                    return BadRequest($"Employee with Id= {id} not found.");
+                }
+                return await empRepo.DeleteEmployee(id);  
+            }
+            catch (Exception)
+            {
+                return StatusCode(StatusCodes.Status500InternalServerError, "Error retrieving data from the database");
+            }
+
         }
     }
 }
