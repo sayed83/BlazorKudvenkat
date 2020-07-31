@@ -31,11 +31,11 @@ namespace EmployeeManagement.Api.Models
             await db.SaveChangesAsync();
             return result.Entity;
         }
-        
+
         public async Task<Department> UpdateDepartment(Department dept)
         {
             var result = await db.Departments.FirstOrDefaultAsync(d => d.DepartmentId == dept.DepartmentId);
-            if(result != null)
+            if (result != null)
             {
                 result.DepartmentId = dept.DepartmentId;
                 result.DepartmentName = dept.DepartmentName;
@@ -45,17 +45,17 @@ namespace EmployeeManagement.Api.Models
             return null;
         }
 
-        public async void DeleteDepartment(int deptId)
+        public async Task<Department> DeleteDepartment(int deptId)
         {
-            var result =await db.Departments.FirstOrDefaultAsync(d => d.DepartmentId == deptId);
-            if(result != null)
+
+            var result = await db.Departments.FirstOrDefaultAsync(d => d.DepartmentId == deptId);
+            if (result != null)
             {
                 db.Departments.Remove(result);
                 await db.SaveChangesAsync();
-            }           
+                return result;
+            }
+            return null;
         }
-
-
-
     }
 }

@@ -12,6 +12,6 @@ namespace EmployeeManagement.Api.Models
         Task<Department> GetDepartment(int deptId);
         Task<Department> AddDepartment(Department dept);
         Task<Department> UpdateDepartment(Department dept);
-        void DeleteDepartment(int deptId);
+        Task<Department> DeleteDepartment(int deptId);
     }
 }
