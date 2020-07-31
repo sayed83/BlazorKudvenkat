@@ -36,10 +36,14 @@
     <h3>The background colour of this text changes</h3>
 </div>
 
-
+<div class="container-fluid badge-info">
+    <div><textarea @bind="Discount" @bind:event="oninput"></textarea></div>
+    <div><b>Count :</b> @Discount.Length</div>
+</div>
 
 @code {
     protected string Name { get; set; } = "Sayed";
     protected string Gender { get; set; } = "Male";
     protected string Colour { get; set; } = "background-color:white";
+    protected string Discount { get; set; } = string.Empty;
 }
