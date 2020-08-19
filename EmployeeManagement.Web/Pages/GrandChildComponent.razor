@@ -1,4 +1,4 @@
-﻿<h3 style="@ElementStyle; @H1Border"> --GrandChildComponent</h3>
+﻿<h3 style="@ElementStyle; @H1Border"> --GrandChildComponent - @Count</h3>
 
 @code {
 
@@ -7,4 +7,7 @@
 
     [CascadingParameter(Name = "BorderStyle")]
     public string H1Border { get; set; }
+
+    [CascadingParameter(Name = "Count")]
+    public int Count { get; set; }
 }

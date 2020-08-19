@@ -1,10 +1,17 @@
 ﻿@page "/parent"
 
-<h3 style="@Style">ParentComponent</h3>
-<CascadingValue Value="@Style" Name="FontStyle">
-    <CascadingValue Value="@BorderStyle" Name="BorderStyle">
-        <ChildComponent>
-        </ChildComponent>
+    <button class="btn btn-primary" @onclick="IncrementCounter">
+        Increment Counter
+    </button>
+
+<h3 style="@Style">ParentComponent - @Count</h3>
+
+<CascadingValue Value="@Count" Name="Count" IsFixed="false">
+    <CascadingValue Value="@Style" Name="FontStyle" IsFixed="true">
+        <CascadingValue Value="@BorderStyle" Name="BorderStyle" IsFixed="true">
+            <ChildComponent>
+            </ChildComponent>
+        </CascadingValue>
     </CascadingValue>
 </CascadingValue>
 
@@ -23,4 +30,10 @@
 
     public string Style { get; set; } = "color:red";
     public string BorderStyle { get; set; } = "border:1px solid red";
+    public int Count { get; set; } = 0;
+
+    private void IncrementCounter()
+    {
+        Count = Count + 1;
+    }
 }
