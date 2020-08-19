@@ -1,0 +1,23 @@
+﻿@page "/parent"
+
+<h3 style="@Style">ParentComponent</h3>
+<CascadingValue Value="@Style">
+    <ChildComponent>
+    </ChildComponent>
+</CascadingValue>
+
+
+@*<ChildComponent InputAttributes="AttributeFromParent">
+</ChildComponent>*@
+
+@code {
+    public Dictionary<string, object> AttributeFromParent { get; set; } = new Dictionary<string, object>()
+    {
+        {"required","required" },
+        {"placeholder","Parent Name" },
+        {"size","100" },
+        {"maxlength","15" }
+    };
+
+    public string Style { get; set; } = "color:red";
+}

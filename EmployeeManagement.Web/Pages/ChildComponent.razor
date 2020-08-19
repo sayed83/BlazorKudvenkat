@@ -1,0 +1,35 @@
+﻿<h3 style="@ElementStyle"> -ChildComponent</h3>
+
+<GrandChildComponent>
+
+</GrandChildComponent>
+
+<div class="container">
+    <div>
+        @*Work [Parameter] with this input box becouse placeholder is a property*@
+        <input type="text" id="firstname" placeholder="@Placeholder" @attributes="InputAttributes" value="@Value" />
+
+        @*Work [Parameter(CaptureUnmatchedValues = true)] with this input box becouse placeholder is a capture attribute*@
+        @*[Parameter(CaptureUnmatchedValues = true)] == To be able to capture attribute values that do not have matching parameters ==*@
+        <input type="text" id="firstname" placeholder="Default Placeholder" @attributes="InputAttributes" value="@Value" />
+    </div>
+</div>
+
+@code {
+    [Parameter]
+    public string Placeholder { get; set; } = "Enter First Name";
+    //[Parameter(CaptureUnmatchedValues = true)] == To be able to capture attribute values that do not have matching parameters ==
+    [Parameter]
+    public Dictionary<string, object> InputAttributes { get; set; } = new Dictionary<string, object>()
+    {
+        {"required","required" },
+        {"placeholder","Child Name" },
+        {"size","100" },
+        {"maxlength","15" }
+    };
+
+    [Parameter]
+    public string Value { get; set; } = "Child Value";
+    [CascadingParameter]
+    public string ElementStyle { get; set; }
+}
