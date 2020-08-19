@@ -24,7 +24,8 @@ namespace EmployeeManagement.Web.Models
         public string ConfirmEmail { get; set; }
         public DateTime DateOfBrith { get; set; }
         public Gender Gender { get; set; }
-        public Department Department { get; set; }
+        [ValidateComplexType]
+        public Department Department { get; set; } = new Department();
         public int DepartmentId { get; set; }
         public string PhotoPath { get; set; }
     }
