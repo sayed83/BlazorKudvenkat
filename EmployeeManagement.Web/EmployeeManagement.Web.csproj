@@ -10,10 +10,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="wwwroot\images\" />
-  </ItemGroup>
-
-  <ItemGroup>
     <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="8.0.1" />
     <PackageReference Include="Microsoft.AspNetCore.Blazor.HttpClient" Version="3.2.0-preview3.20168.3" />
     <PackageReference Include="Microsoft.AspNetCore.Components" Version="3.1.6" />

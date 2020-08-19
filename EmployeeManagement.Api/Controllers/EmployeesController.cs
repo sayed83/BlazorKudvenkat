@@ -72,7 +72,7 @@ namespace EmployeeManagement.Api.Controllers
             {
                 if (employee == null) return BadRequest();
 
-                var email = empRepo.GetEmployeeByEmail(employee.Email);
+                var email = await empRepo.GetEmployeeByEmail(employee.Email);
 
                 if(email != null)
                 {
@@ -90,21 +90,16 @@ namespace EmployeeManagement.Api.Controllers
             }
         }
 
-        [HttpPut("{id:int}")]
-        public async Task<ActionResult<Employee>> UpdateEmployee(int id,Employee employee)
+        [HttpPut()]  // no need Id
+        public async Task<ActionResult<Employee>> UpdateEmployee(Employee employee)
         {
             try
-            {
-                if(id != employee.EmployeeId)
-                {
-                    return BadRequest("Employee Id not match");                   
-                }
-
-                var EmployeeToUpdate = await empRepo.GetEmployee(id);
+            {               
+                var EmployeeToUpdate = await empRepo.GetEmployee(employee.EmployeeId);
 
                 if(EmployeeToUpdate == null)
                 {
-                    return BadRequest($"Employee with id= {id} not found");
+                    return BadRequest($"Employee with id= {employee.EmployeeId} not found");
                 }
                 return await empRepo.UpdateEmployee(employee);
             }
