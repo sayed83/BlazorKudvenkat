@@ -1,9 +1,11 @@
 ﻿@page "/parent"
 
 <h3 style="@Style">ParentComponent</h3>
-<CascadingValue Value="@Style">
-    <ChildComponent>
-    </ChildComponent>
+<CascadingValue Value="@Style" Name="FontStyle">
+    <CascadingValue Value="@BorderStyle" Name="BorderStyle">
+        <ChildComponent>
+        </ChildComponent>
+    </CascadingValue>
 </CascadingValue>
 
 
@@ -20,4 +22,5 @@
     };
 
     public string Style { get; set; } = "color:red";
+    public string BorderStyle { get; set; } = "border:1px solid red";
 }

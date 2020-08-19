@@ -1,4 +1,4 @@
-﻿<h3 style="@ElementStyle"> -ChildComponent</h3>
+﻿<h3 style="@ElementStyle; @H1Border"> -ChildComponent</h3>
 
 <GrandChildComponent>
 
@@ -30,6 +30,12 @@
 
     [Parameter]
     public string Value { get; set; } = "Child Value";
-    [CascadingParameter]
+
+    [CascadingParameter(Name = "FontStyle")]
     public string ElementStyle { get; set; }
+
+    [CascadingParameter(Name = "BorderStyle")]
+    public string H1Border { get; set; }
+
+
 }
