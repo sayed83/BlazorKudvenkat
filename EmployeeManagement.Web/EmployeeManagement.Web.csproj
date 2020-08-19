@@ -5,6 +5,14 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="doc.txt" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="doc.txt" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\EmployeeManagement.Components\EmployeeManagement.Components.csproj" />
     <ProjectReference Include="..\EmployeeManagement.Models\EmployeeManagement.Models.csproj" />
   </ItemGroup>

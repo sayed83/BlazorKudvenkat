@@ -6,7 +6,7 @@
 <EditForm Model="@EditEmployeeModel" OnValidSubmit="HandleValidSubmit">
     @* <DataAnnotationsValidator /> To validate the top-level properties (FirstName and LastName) of Employee class, we use DataAnnotationsValidator component.*@
     <ObjectGraphDataAnnotationsValidator /> @*Use for Complex type Department property in the Employee class is a complex type.*@
-    <h3>Edit Employee</h3>
+    <h3>@PageTitle</h3>
     <hr />
     <ValidationSummary />
     <div class="form-group row">

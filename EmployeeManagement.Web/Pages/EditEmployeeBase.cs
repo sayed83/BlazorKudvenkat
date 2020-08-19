@@ -29,15 +29,18 @@ namespace EmployeeManagement.Web.Pages
         public string DepartmentId { get; set; }
         [Parameter]
         public string Id { get; set; }
+        public string PageTitle { get; set; }
         protected async override Task OnInitializedAsync()
         {
             int.TryParse(Id, out int employeeId);
             if(employeeId != 0)
             {
+                PageTitle = "Edit Employee";
                 Employee = await EmployeeService.GetEmployee(int.Parse(Id));
             }
             else
             {
+                PageTitle = "Create Employee";
                 Employee = new Employee
                 {
                     DepartmentId = 1,
