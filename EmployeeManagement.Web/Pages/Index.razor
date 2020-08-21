@@ -1,0 +1,101 @@
+﻿@page "/index"
+@using EmployeeManagement.Web.Services
+@inject IJSRuntime _JsRuntime
+@inject ServiceComponent Service
+@*@inject NavigationManager navigationManager*@
+@*@inject ILocalStorageService localStorageService*@
+
+
+<div class="container">
+    <div class="col-sm-12">
+
+
+        User Id:
+        <input class="form-control" @bind="userId" />
+
+
+        Password:
+        <input class="form-control" @bind="password" />
+
+        <br />
+        <button class="btn btn-info" @onclick="@(()=> CreateToken())">Login/Create Token</button>
+        <button class="btn btn-primary" @onclick="@(()=> PostMethod())">Post</button>
+
+        <hr />
+        <br />
+
+        <label class="col-form-label">@Bearer</label>
+        <label class="col-form-label">@Message</label>
+
+    </div>
+</div>
+
+@*@if (IsUserAuthenticated)
+    {
+        <h3><b>@user.Identity.Name</b> is logged in!!</h3>
+    }
+    else
+    {
+        <h3><b>User is logged out</b></h3>
+    }*@
+
+@code {
+    string userId;
+    string password;
+    string Message;
+
+    [Parameter]
+    public string Bearer { get; set; }
+
+
+    public void CreateToken()
+    {
+        Message = "";
+        Bearer = "";
+        var response = Service.ResponseJson("http://localhost:52245/api/login?userId=" + userId + "&password=" + password + "", null, null, null, RestSharp.Method.GET);
+        if (response.StatusCode == System.Net.HttpStatusCode.OK)
+        {
+            var json = JsonConvert.DeserializeObject<Dictionary<string, string>>(response.Content)["token"].ToString();
+            Bearer = json;
+            Message = "Create Token Success:" + response.StatusCode.ToString();
+        }
+        else
+        {
+            Message = "Create Token Error:" + response.StatusCode.ToString();
+        }
+    }
+
+    public void PostMethod()
+    {
+        Message = "";
+        Dictionary<string, string> header = new Dictionary<string, string>();
+        header.Add("Authorization", "Bearer" + Bearer);
+        var value = Guid.NewGuid().ToString();
+        var response = Service.ResponseJsonAuth("http://localhost:52245/api/login", value, header, RestSharp.Method.GET);
+
+        if (response.StatusCode == System.Net.HttpStatusCode.OK)
+        {
+
+            Message = "Post Success:" + response.StatusCode.ToString();
+        }
+        else
+        {
+            Message = "Post Error:" + response.StatusCode.ToString();
+        }
+    }
+
+
+    //[CascadingParameter]
+    //private Task<AuthenticationState> authenticationStateTask { get; set; }
+    //System.Security.Claims.ClaimsPrincipal user;
+
+    //bool IsUserAuthenticated;
+
+    //protected override async Task OnInitializedAsync()
+    //{
+    //    user = (await authenticationStateTask).User;
+
+    //    if (user.Identity.IsAuthenticated)
+    //        IsUserAuthenticated = true;
+    //}
+}

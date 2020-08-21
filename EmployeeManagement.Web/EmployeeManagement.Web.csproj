@@ -5,6 +5,38 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="wwwroot\build\**" />
+    <Compile Remove="wwwroot\dist\**" />
+    <Compile Remove="wwwroot\docs\**" />
+    <Compile Remove="wwwroot\pages\**" />
+    <Compile Remove="wwwroot\plugins\**" />
+    <Content Remove="wwwroot\build\**" />
+    <Content Remove="wwwroot\dist\**" />
+    <Content Remove="wwwroot\docs\**" />
+    <Content Remove="wwwroot\pages\**" />
+    <Content Remove="wwwroot\plugins\**" />
+    <EmbeddedResource Remove="wwwroot\build\**" />
+    <EmbeddedResource Remove="wwwroot\dist\**" />
+    <EmbeddedResource Remove="wwwroot\docs\**" />
+    <EmbeddedResource Remove="wwwroot\pages\**" />
+    <EmbeddedResource Remove="wwwroot\plugins\**" />
+    <None Remove="wwwroot\build\**" />
+    <None Remove="wwwroot\dist\**" />
+    <None Remove="wwwroot\docs\**" />
+    <None Remove="wwwroot\pages\**" />
+    <None Remove="wwwroot\plugins\**" />
+    <TypeScriptCompile Remove="wwwroot\build\**" />
+    <TypeScriptCompile Remove="wwwroot\dist\**" />
+    <TypeScriptCompile Remove="wwwroot\docs\**" />
+    <TypeScriptCompile Remove="wwwroot\pages\**" />
+    <TypeScriptCompile Remove="wwwroot\plugins\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Remove="Shared\_Layout.cshtml" />
+  </ItemGroup>
+
+  <ItemGroup>
     <None Remove="doc.txt" />
   </ItemGroup>
 
@@ -19,6 +51,7 @@
 
   <ItemGroup>
     <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="8.0.1" />
+    <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="3.1.7" />
     <PackageReference Include="Microsoft.AspNetCore.Blazor.HttpClient" Version="3.2.0-preview3.20168.3" />
     <PackageReference Include="Microsoft.AspNetCore.Components" Version="3.1.6" />
     <PackageReference Include="Microsoft.AspNetCore.Components.DataAnnotations.Validation" Version="3.2.0-rc1.20223.4" />
@@ -29,7 +62,12 @@
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
+    <PackageReference Include="Microsoft.TypeScript.MSBuild" Version="4.0.2">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
     <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="3.1.4" />
+    <PackageReference Include="RestSharp" Version="106.11.4" />
   </ItemGroup>
 
 </Project>
