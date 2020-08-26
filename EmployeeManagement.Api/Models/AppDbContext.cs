@@ -12,6 +12,13 @@ namespace EmployeeManagement.Api.Models
         public AppDbContext(DbContextOptions<AppDbContext> options): base(options) { }
         public DbSet<Employee> Employees { get; set; }
         public DbSet<Department> Departments { get; set; }
+        public DbSet<Module> Module { get; set; }
+        public DbSet<ModuleGroup> ModuleGroup { get; set; }
+        public DbSet<ModuleMenu> ModuleMenu { get; set; }
+        public DbSet<SoftwaredPackage> SoftwaredPackage { get; set; }
+        public DbSet<MenuPermission_Master> MenuPermission_Master { get; set; }
+        public DbSet<MenuPermission_Details> MenuPermission_Details { get; set; }
+        
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {

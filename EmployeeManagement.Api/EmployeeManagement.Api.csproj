@@ -6,6 +6,10 @@
 
   <ItemGroup>
     <Compile Remove="Components\ServiceComponent.cs" />
+    <Compile Remove="Migrations\20200826163929_ModuleMenu.cs" />
+    <Compile Remove="Migrations\20200826163929_ModuleMenu.Designer.cs" />
+    <Compile Remove="Migrations\20200826164516_Package.cs" />
+    <Compile Remove="Migrations\20200826164516_Package.Designer.cs" />
   </ItemGroup>
 
   <ItemGroup>

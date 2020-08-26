@@ -4,14 +4,16 @@ using EmployeeManagement.Api.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace EmployeeManagement.Api.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    partial class AppDbContextModelSnapshot : ModelSnapshot
+    [Migration("20200826171551_ModuleMenuList")]
+    partial class ModuleMenuList
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -374,49 +376,6 @@ namespace EmployeeManagement.Api.Migrations
                     b.HasIndex("ParentId");
 
                     b.ToTable("ModuleMenu");
-                });
-
-            modelBuilder.Entity("EmployeeManagement.Models.SoftwaredPackage", b =>
-                {
-                    b.Property<int>("SoftwarePackageId")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<string>("LinkAdd")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Name")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("PackageEndDate")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("PackageStartDate")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("SoftwarePackageCode")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("SoftwarePackageDescription")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(300)")
-                        .HasMaxLength(300);
-
-                    b.Property<string>("SoftwarePackageFileExtension")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<byte[]>("SoftwarePackageImage")
-                        .HasColumnType("varbinary(max)");
-
-                    b.Property<string>("SoftwarePackageImagePath")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("SoftwarePackageId");
-
-                    b.ToTable("SoftwaredPackage");
                 });
 
             modelBuilder.Entity("EmployeeManagement.Models.Employee", b =>
