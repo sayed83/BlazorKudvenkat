@@ -1,2 +1,9 @@
-﻿https://www.youtube.com/watch?v=s8uzt8nxMA0
+﻿
+-- Jwt Bearer Token Link --
+https://www.youtube.com/watch?v=s8uzt8nxMA0
 
+-- Admin dashboar add link --
+https://www.youtube.com/watch?v=PodDKNZUoSM
+
+Learn ASP.NET Core 3.1 - Full Course for Beginners [Tutorial]
+https://www.youtube.com/watch?v=C5cnZ-gZy2I&t=3689s
